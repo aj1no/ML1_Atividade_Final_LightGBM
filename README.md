@@ -26,7 +26,6 @@ Repositório referente à **Atividade Final** da disciplina de **Aprendizado de 
 
 ▶️ **[Assistir à apresentação em vídeo (7 min 16 s)](video/Apresentacao_LightGBM_Rodolfo.mp4)**
 
-Apresentação narrada da investigação: fundamentação teórica do LightGBM, problema de negócio, os três experimentos e a avaliação final no conjunto de teste.
 
 ---
 
