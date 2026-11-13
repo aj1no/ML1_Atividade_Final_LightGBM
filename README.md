@@ -34,8 +34,8 @@ Repositório referente à **Atividade Final** da disciplina de **Aprendizado de 
 O notebook principal (`Atividade_Final_ML1_LightGBM.ipynb`) contempla integralmente as **8 seções obrigatórias do edital**:
 
 1. **Seção 1 — Introdução:** Motivação histórica, finalidade do **LightGBM** (Ke et al., NeurIPS 2017) e problemas que resolve em dados tabulares heterogêneos.
-2. **Seção 2 — Fundamentação Teórica e Matemática:** Formulação aditiva do *Gradient Boosting* ($F_m(\mathbf{x}) = F_{m-1}(\mathbf{x}) + \eta \cdot h_m(\mathbf{x})$), expansão de Taylor de segunda ordem (gradientes $g_i$ e hessianas $h_i$), discretização em histogramas de 255 *bins* com subtração de histogramas, **GOSS** (*Gradient-based One-Side Sampling*), **EFB** (*Exclusive Feature Bundling*), crescimento ***leaf-wise* (*best-first*)** vs. ***level-wise* (*depth-first*)** e dicionário de hiperparâmetros.
-3. **Seção 3 — Aplicações Práticas e Problema de Negócio:** Casos reais de uso industrial e modelagem do problema de **Risco de Inadimplência de Crédito Bancário (`N = 5.000` contratos, `22,0%` de inadimplentes)** com matriz de custos assimétricos ($\text{Custo}_{\text{FN}} = \text{R\$ } 8.500,00$ por inadimplente aprovado vs. $\text{Custo}_{\text{FP}} = \text{R\$ } 450,00$ por bom pagador revisado em mesa de crédito).
+2. **Seção 2 — Fundamentação Teórica e Matemática:** Formulação aditiva do *Gradient Boosting* ($`F_m(\mathbf{x}) = F_{m-1}(\mathbf{x}) + \eta \cdot h_m(\mathbf{x})`$), expansão de Taylor de segunda ordem (gradientes $g_i$ e hessianas $h_i$), discretização em histogramas de 255 *bins* com subtração de histogramas, **GOSS** (*Gradient-based One-Side Sampling*), **EFB** (*Exclusive Feature Bundling*), crescimento ***leaf-wise* (*best-first*)** vs. ***level-wise* (*depth-first*)** e dicionário de hiperparâmetros.
+3. **Seção 3 — Aplicações Práticas e Problema de Negócio:** Casos reais de uso industrial e modelagem do problema de **Risco de Inadimplência de Crédito Bancário (`N = 5.000` contratos, `22,0%` de inadimplentes)** com matriz de custos assimétricos (**Custo FN = R\$ 8.500,00** por inadimplente aprovado vs. **Custo FP = R\$ 450,00** por bom pagador revisado em mesa de crédito).
 4. **Seção 4 — Implementação em Python (EDA, Prevenção de *Data Leakage* e Baselines):** Análise exploratória, diagnóstico de assimetria e *outliers*, divisão estratificada (`Treino = 3.500`, `Validação = 750`, `Teste Oficial = 750`) **antes** do pré-processamento, construção de `ColumnTransformer` + `Pipeline` livre de vazamento de dados e comparação inicial com `DummyClassifier`.
 5. **Seção 5 — Experimentação Controlada:** Três experimentos sistemáticos conduzidos via validação cruzada estratificada de 5 *folds* (`StratifiedKFold`) e partição de validação.
 6. **Seção 6 — Avaliação Comparativa Final no Conjunto de Teste Oficial (`N = 750`):** Confronto entre 7 modelos usando *Accuracy*, *Precision*, *Recall*, *F1-Score*, *ROC-AUC*, Curvas ROC, Importância de Variáveis, Tempo de Treinamento e Custo Financeiro Total.
@@ -54,7 +54,7 @@ O notebook principal (`Atividade_Final_ML1_LightGBM.ipynb`) contempla integralme
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | `C1 (L=3, d=2, lr=0.02)` | 0,7814 | 0,7657 ± 0,0252 | +0,0157 | 0,9594 | 0,9537 | *Underfitting* (Alto Viés) |
 | `C2 (L=7, d=3, lr=0.05)` | 0,9031 | 0,8572 ± 0,0186 | +0,0459 | 0,9911 | 0,9803 | Conservador |
-| **`C3 (L=15, d=4, lr=0.05)`** | **0,9417** | **0,8589 ± 0,0246** | **+0,0828** | **0,9969** | **0,9825** | **Maior F1 e AUC de validação ($\text{num\_leaves} < 2^4$)** |
+| **`C3 (L=15, d=4, lr=0.05)`** | **0,9417** | **0,8589 ± 0,0246** | **+0,0828** | **0,9969** | **0,9825** | **Maior F1 e AUC de validação (`num_leaves` < 2⁴)** |
 | `C4 (L=31, d=-1, lr=0.10)` | 1,0000 | 0,8565 ± 0,0218 | +0,1435 | 1,0000 | 0,9800 | Padrão LightGBM (memoriza o treino) |
 | `C5 (L=63, d=-1, lr=0.15)` | 1,0000 | 0,8568 ± 0,0225 | +0,1432 | 1,0000 | 0,9795 | Memoriza o treino |
 | `C6 (L=127, d=-1, lr=0.25)` | 1,0000 | 0,8569 ± 0,0254 | +0,1431 | 1,0000 | 0,9798 | Memoriza o treino |
@@ -76,7 +76,7 @@ De `C2` a `C6`, o F1 de validação empata dentro do desvio-padrão; a diferenç
 
 ### 3. Experimento 3 — Calibração do Limiar de Decisão ($p^*$) pelo Custo Financeiro na Validação (`N = 750`)
 
-Custo $= \text{R\$ } 8.500 \times \text{FN} + \text{R\$ } 450 \times \text{FP}$. A varredura fina (passo `0,01`) encontrou **`p* = 0,06`**, próximo do limiar teórico de Bayes $450 / 8.950 \approx 0,05$:
+**Custo = R\$ 8.500 × FN + R\$ 450 × FP**. A varredura fina (passo `0,01`) encontrou **`p* = 0,06`**, próximo do limiar teórico de Bayes (450 / 8.950 ≈ 0,05):
 
 - **Limiar Padrão (`p = 0,50`):** `Precision = 0,8581` | `Recall = 0,8061` | `F1 = 0,8312` | `FN = 32` | `FP = 22` | **Custo = R\$ 281.900,00**
 - **`scale_pos_weight = 3,55` (`p = 0,50`):** `Precision = 0,8063` | `Recall = 0,9333` | `F1 = 0,8652` | `FN = 11` | `FP = 37` | **Custo = R\$ 110.150,00**
