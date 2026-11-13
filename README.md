@@ -41,7 +41,7 @@ O notebook principal (`Atividade_Final_ML1_LightGBM.ipynb`) contempla integralme
 5. **Seção 5 — Experimentação Controlada:** Três experimentos sistemáticos conduzidos via validação cruzada estratificada de 5 *folds* (`StratifiedKFold`) e partição de validação.
 6. **Seção 6 — Avaliação Comparativa Final no Conjunto de Teste Oficial (`N = 750`):** Confronto entre 7 modelos usando *Accuracy*, *Precision*, *Recall*, *F1-Score*, *ROC-AUC*, Curvas ROC, Importância de Variáveis, Tempo de Treinamento e Custo Financeiro Total.
 7. **Seção 7 — Análise Crítica:** Vantagens, limitações operacionais e quadro comparativo com os algoritmos da disciplina.
-8. **Seção 8 — Conclusão, Referências Bibliográficas e Relato de Uso de Ferramentas de IA.**
+8. **Seção 8 — Conclusão e Referências Bibliográficas.**
 
 ---
 
@@ -124,8 +124,3 @@ ML1_Atividade_Final_LightGBM/
    pip install numpy pandas scikit-learn lightgbm matplotlib seaborn jupyter
    jupyter notebook Atividade_Final_ML1_LightGBM.ipynb
    ```
-
----
-
-
-
