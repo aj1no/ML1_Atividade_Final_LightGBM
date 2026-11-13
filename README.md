@@ -115,8 +115,5 @@ ML1_Atividade_Final_LightGBM/
 
 ---
 
-## Relato de Uso de Ferramentas de IA
 
-- **Ferramenta:** ChatGPT — *Utilizado para melhorar escrita e fluídez do texto.*
-- **Ferramenta:** Gemini — *Utilizado para desenvolvimento de código e estruturação dos experimentos e análises.*
 
