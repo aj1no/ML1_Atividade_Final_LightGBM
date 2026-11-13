@@ -97,7 +97,6 @@ Considerando o custo assimétrico de negócio ($\text{Custo} = \text{R\$ } 8.500
 ```text
 ML1_Atividade_Final_LightGBM/
 ├── Atividade_Final_ML1_LightGBM.ipynb   # Notebook completo com 8 secoes, 3 experimentos, graficos e analises
-├── ROTEIRO_APRESENTACAO_VIDEO_15MIN.md  # Roteiro estruturado minuto a minuto para gravacao do video (15 min)
 ├── README.md                            # Documentacao academica e sintese dos resultados
 ├── LICENSE                              # Licenca MIT
 └── .gitignore                           # Arquivos ignorados pelo Git
@@ -120,3 +119,4 @@ ML1_Atividade_Final_LightGBM/
 
 - **Ferramenta:** ChatGPT — *Utilizado para melhorar escrita e fluídez do texto.*
 - **Ferramenta:** Gemini — *Utilizado para desenvolvimento de código e estruturação dos experimentos e análises.*
+
